@@ -15,7 +15,7 @@ class DataSourceModule {
 
     @Singleton
     @Provides
-    fun provideExampleDataSource(): NoSQLDataSource = FireStoreDataSource()
+    fun provideNoSQLDataSource(): NoSQLDataSource = FireStoreDataSource()
 
     @Provides
     fun fireStoreDataBase(): FirebaseFirestore = Firebase.firestore

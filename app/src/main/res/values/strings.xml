@@ -11,4 +11,5 @@
     <string name="random_description_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor sem, hendrerit porttitor viverra nec, malesuada vel enim. In at odio lorem. Donec maximus luctus nisl, vel blandit mauris ultrices quis. Etiam porta ipsum sit amet interdum porta. Fusce ultrices commodo urna at vestibulum.</string>
     <string name="random_description_4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum urna sed lacus faucibus, vel laoreet libero feugiat. Aenean non interdum nunc. Mauris condimentum sapien mauris, nec porttitor quam varius finibus. Vestibulum scelerisque laoreet consectetur. </string>
     <string name="random_description_5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pulvinar ante sit amet congue condimentum. Aenean tortor erat, egestas eget auctor et, dapibus eu tellus. Donec mattis pulvinar porttitor. Sed auctor odio in sodales viverra. Nulla ac enim diam. Nunc aliquet nunc ante, vel consectetur leo porttitor ut.</string>
+    <string name="title_product_catalogue">Product catalogue</string>
 </resources>

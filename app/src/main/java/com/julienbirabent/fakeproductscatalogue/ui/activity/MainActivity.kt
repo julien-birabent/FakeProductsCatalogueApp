@@ -36,14 +36,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         viewModel.catalogue.observe(this, Observer { resource ->
-            if (resource.status != Status.LOADING && resource.data.isNullOrEmpty()){
+            if (resource.status != Status.LOADING && resource.data.isNullOrEmpty()) {
                 Log.d(MainActivity::class.simpleName, "Catalogue is being uploaded.")
                 viewModel.uploadCatalogue(randomProductsGenerator.generateRandomProductList(10))
                     .observe(this, Observer {
-                        if(it.status == Status.SUCCESS){
-                           Log.d(MainActivity::class.simpleName, "Catalogue has been uploaded.")
+                        if (it.status == Status.SUCCESS) {
+                            Log.d(MainActivity::class.simpleName, "Catalogue has been uploaded.")
                         }
                     })
+            } else {
+                Log.d(MainActivity::class.simpleName, "Catalogue has already been uploaded.")
             }
         })
     }

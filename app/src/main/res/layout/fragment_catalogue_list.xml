@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.recyclerview.widget.RecyclerView" />
+
+        <variable
+            name="adapter"
+            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
+" />
+
+        <variable
+            name="viewModel"
+            type="com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_small"
+            android:text="@string/title_product_catalogue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/list_examples"
+            layout="@layout/component_list_with_loading_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_header"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:adapter="@{adapter}"
+            bind:isLoading="@{viewModel.isLoading}"
+            bind:orientation="@{RecyclerView.HORIZONTAL}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

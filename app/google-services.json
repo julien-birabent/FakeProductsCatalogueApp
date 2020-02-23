@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "150697303680",
+    "firebase_url": "https://fakeproductscatalogue.firebaseio.com",
+    "project_id": "fakeproductscatalogue",
+    "storage_bucket": "fakeproductscatalogue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150697303680:android:99f17d2f59834d7548d065",
+        "android_client_info": {
+          "package_name": "com.julienbirabent.fakeproductscatalogue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150697303680-h67rqirosgs9k4jc05cd2rcdlb54arim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqJ8kTTThhl1lFqHUn1mwFFr4-nXEGt8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150697303680-h67rqirosgs9k4jc05cd2rcdlb54arim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

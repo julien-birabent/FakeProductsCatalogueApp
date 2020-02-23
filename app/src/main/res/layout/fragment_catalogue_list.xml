@@ -9,8 +9,7 @@
 
         <variable
             name="adapter"
-            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
-" />
+            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter" />
 
         <variable
             name="viewModel"
@@ -26,8 +25,8 @@
             android:id="@+id/text_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_small"
             android:text="@string/title_product_catalogue"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,10 +36,10 @@
             layout="@layout/component_list_with_loading_indicator"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_header"
-            app:layout_constraintTop_toTopOf="parent"
             bind:adapter="@{adapter}"
             bind:isLoading="@{viewModel.isLoading}"
             bind:orientation="@{RecyclerView.HORIZONTAL}" />

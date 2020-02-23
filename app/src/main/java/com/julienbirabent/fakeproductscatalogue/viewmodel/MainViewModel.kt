@@ -12,12 +12,14 @@ import javax.inject.Singleton
 
 @Singleton
 class MainViewModel @Inject constructor(
-    private val getAllUseCase: GetAllUseCase<Product>,
+    getAllUseCase: GetAllUseCase<Product>,
     private val addMultipleObjects: AddMultipleObjects<Product>
 ) :
     ViewModel() {
 
     val catalogue = getAllUseCase.execute(parameters = None()).toLiveData()
+
+    val isLoading = catalogue.resourceLoadingLiveData()
 
     fun uploadCatalogue(examples: List<Product>): LiveData<Resource<List<Product>>> {
         return addMultipleObjects.execute(examples).toLiveData()

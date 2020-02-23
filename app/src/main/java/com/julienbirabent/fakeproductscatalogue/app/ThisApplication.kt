@@ -9,6 +9,8 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
+const val PRODUCT_COLLECTION_NAME = "catalogue"
+
 class ThisApplication : Application(), HasActivityInjector {
 
     private lateinit var component: ApplicationComponent

@@ -22,6 +22,4 @@ class RepositoryModule {
     @Singleton
     fun provideProductRepository(dataSource: NoSQLDataSource): SimpleRepository<Product> =
         ProductRepository(dataSource)
-
-
 }

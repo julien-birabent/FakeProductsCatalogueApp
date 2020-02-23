@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FakeProductsCatalogue</string>
+    <string name="random_title_1">The Only One</string>
+    <string name="random_title_2">Urbanito</string>
+    <string name="random_title_3">Travol</string>
+    <string name="random_title_4">Pikabag</string>
+    <string name="random_title_5">On The Move</string>
+
+    <string name="random_description_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed finibus metus. Fusce lorem elit, fermentum in magna non, euismod maximus tellus. Nunc eu finibus nunc. Fusce sollicitudin erat vitae faucibus finibus. Sed lobortis ultrices tellus a ultricies. Mauris in sagittis elit, ut rutrum nulla. Sed a odio in orci bibendum euismod eget at nulla. Pellentesque efficitur ante eu ipsum vestibulum condimentum. Etiam neque ante, faucibus in fermentum vel, suscipit a nibh. </string>
+    <string name="random_description_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat lobortis convallis. Phasellus at lacus cursus orci rhoncus tristique. Etiam ut urna et nibh molestie bibendum ut eu dui. Vivamus feugiat elit id convallis condimentum. Nunc vitae viverra eros. Nulla facilisi. Mauris malesuada libero ut consectetur vehicula. </string>
+    <string name="random_description_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor sem, hendrerit porttitor viverra nec, malesuada vel enim. In at odio lorem. Donec maximus luctus nisl, vel blandit mauris ultrices quis. Etiam porta ipsum sit amet interdum porta. Fusce ultrices commodo urna at vestibulum.</string>
+    <string name="random_description_4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum urna sed lacus faucibus, vel laoreet libero feugiat. Aenean non interdum nunc. Mauris condimentum sapien mauris, nec porttitor quam varius finibus. Vestibulum scelerisque laoreet consectetur. </string>
+    <string name="random_description_5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pulvinar ante sit amet congue condimentum. Aenean tortor erat, egestas eget auctor et, dapibus eu tellus. Donec mattis pulvinar porttitor. Sed auctor odio in sodales viverra. Nulla ac enim diam. Nunc aliquet nunc ante, vel consectetur leo porttitor ut.</string>
 </resources>

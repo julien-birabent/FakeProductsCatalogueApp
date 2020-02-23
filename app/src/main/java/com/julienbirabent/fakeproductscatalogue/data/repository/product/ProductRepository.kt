@@ -1,11 +1,9 @@
 package com.julienbirabent.fakeproductscatalogue.data.repository.product
 
-import com.julienbirabent.fakeproductscatalogue.app.PRODUCT_COLLECTION_NAME
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.data.repository.BaseRepository
 import com.julienbirabent.fakeproductscatalogue.data.repository.SimpleRepository
 import com.julienbirabent.fakeproductscatalogue.data.source.NoSQLDataSource
-import com.julienbirabent.fakeproductscatalogue.di.DatabaseInfo
 import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -29,6 +27,10 @@ class ProductRepository @Inject constructor(
 
     override fun get(id: String): Observable<Product> {
         return dataSource.getDocument(collectionName, id, Product::class.java)
+    }
+
+    override fun delete(model: Product): Single<Product> {
+        return dataSource.deleteDocument(collectionName, model.uid, model)
     }
 
 }

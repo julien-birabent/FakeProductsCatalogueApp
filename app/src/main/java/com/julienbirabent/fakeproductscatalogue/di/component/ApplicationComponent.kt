@@ -2,9 +2,9 @@ package com.julienbirabent.fakeproductscatalogue.di.component
 
 import android.app.Application
 import com.julienbirabent.fakeproductscatalogue.app.ThisApplication
-import com.julienbirabent.fakeproductscatalogue.domain.UseCase
 import com.julienbirabent.fakeproductscatalogue.data.source.firestore.FireStoreDataSource
 import com.julienbirabent.fakeproductscatalogue.di.module.*
+import com.julienbirabent.fakeproductscatalogue.domain.UseCase
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

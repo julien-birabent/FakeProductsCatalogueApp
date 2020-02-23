@@ -15,11 +15,13 @@ class RepositoryModule {
 
     @Provides
     @DatabaseInfo(PRODUCT_COLLECTION_NAME)
-    @Singleton
     fun provideProductCollectionName(): String = PRODUCT_COLLECTION_NAME
 
     @Provides
     @Singleton
-    fun provideProductRepository(dataSource: NoSQLDataSource): SimpleRepository<Product> =
-        ProductRepository(dataSource)
+    fun provideProductRepository(
+        dataSource: NoSQLDataSource,
+        @DatabaseInfo(PRODUCT_COLLECTION_NAME) collectionName: String
+    ): SimpleRepository<Product> =
+        ProductRepository(dataSource,collectionName)
 }

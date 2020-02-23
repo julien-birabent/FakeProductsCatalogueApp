@@ -12,13 +12,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProductRepository @Inject constructor(override val dataSource: NoSQLDataSource) :
+class ProductRepository @Inject constructor(
+    override val dataSource: NoSQLDataSource,
+    override val collectionName: String
+) :
     BaseRepository<Product>(),
     SimpleRepository<Product> {
-
-    @Inject
-    @field:DatabaseInfo(PRODUCT_COLLECTION_NAME)
-    lateinit var collectionName: String
 
     override fun add(model: Product): Single<Product> {
         return dataSource.addNewValue(collectionName, model)

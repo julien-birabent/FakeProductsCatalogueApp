@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
+    }
+
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.julienbirabent.fakeproductscatalogue"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://numbersapi.com\"")
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://numbersapi.com\"")
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+ext {
+    dagger2Version = '2.17'
+    archLifecycleVersion = '1.1.1'
+    glideVersion = '4.9.0'
+    reactiveXVersion = '2.1.1'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
+
+    implementation 'com.google.firebase:firebase-firestore-ktx:21.4.0'
+
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.2.0"
+
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
+
+    implementation "io.reactivex.rxjava2:rxandroid:$reactiveXVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0-beta.1"
+
+    /* Android Support Library: RecyclerView, CardView  */
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    /* Android Architecture Component - ConstraintLayout  */
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    /* Android Architecture Component - LiveData & ViewModel  */
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    /* Dagger2 - We are going to use dagger.android which includes
+     * support for Activity and fragment injection so we need to include
+     * the following dependencies */
+    kapt "com.google.dagger:dagger-android-processor:$dagger2Version"
+    implementation "com.google.dagger:dagger-android:$dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2Version"
+
+    /* Dagger2 - default dependency */
+    kapt "com.google.dagger:dagger-compiler:$dagger2Version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.61"
+}

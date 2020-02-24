@@ -2,6 +2,10 @@ package com.julienbirabent.fakeproductscatalogue.di.component
 
 import android.app.Application
 import com.julienbirabent.fakeproductscatalogue.app.ThisApplication
+import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
+import com.julienbirabent.fakeproductscatalogue.data.repository.BaseRepository
+import com.julienbirabent.fakeproductscatalogue.data.repository.ProductRepository
+import com.julienbirabent.fakeproductscatalogue.data.repository.product.ProductRepositoryImpl
 import com.julienbirabent.fakeproductscatalogue.data.source.firestore.FireStoreDataSource
 import com.julienbirabent.fakeproductscatalogue.di.module.*
 import com.julienbirabent.fakeproductscatalogue.domain.UseCase
@@ -28,6 +32,8 @@ interface ApplicationComponent {
     fun inject(useCase: UseCase.Injector)
 
     fun inject(fireStoreDataSource: FireStoreDataSource.Injector)
+
+    fun inject(productRepository: ProductRepositoryImpl)
 
     @Component.Builder
     interface Builder {

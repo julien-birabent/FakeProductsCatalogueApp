@@ -5,7 +5,7 @@ import com.julienbirabent.fakeproductscatalogue.data.entity.FireStoreAutoGenerat
 import com.julienbirabent.fakeproductscatalogue.data.entity.ImageResource
 
 @IgnoreExtraProperties
-class Product(
+open class Product(
     var title: String = "",
     var description: String = "",
     var colors: List<ColorResource<*>> = listOf(),

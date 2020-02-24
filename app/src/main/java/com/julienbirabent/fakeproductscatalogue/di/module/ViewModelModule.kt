@@ -6,6 +6,7 @@ import com.julienbirabent.fakeproductscatalogue.di.ViewModelKey
 import com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel
 import com.julienbirabent.fakeproductscatalogue.viewmodel.ProductDetailsViewModel
 import com.julienbirabent.fakeproductscatalogue.viewmodel.ViewModelFactory
+import com.julienbirabent.fakeproductscatalogue.viewmodel.WishListViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -32,6 +33,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProductDetailsViewModel::class)
     abstract fun bindProductDetailsViewModel(viewModel: ProductDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WishListViewModel::class)
+    abstract fun bindWishListViewModel(viewModel: WishListViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

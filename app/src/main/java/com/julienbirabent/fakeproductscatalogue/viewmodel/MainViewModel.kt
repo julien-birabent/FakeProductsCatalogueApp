@@ -4,25 +4,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.domain.Resource
-import com.julienbirabent.fakeproductscatalogue.domain.common.AddMultipleObjects
-import com.julienbirabent.fakeproductscatalogue.domain.common.GetAllUseCase
+import com.julienbirabent.fakeproductscatalogue.domain.common.AddMultipleProducts
+import com.julienbirabent.fakeproductscatalogue.domain.common.GetAllProductUseCase
 import com.julienbirabent.fakeproductscatalogue.rx.firebase.None
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MainViewModel @Inject constructor(
-    getAllUseCase: GetAllUseCase<Product>,
-    private val addMultipleObjects: AddMultipleObjects<Product>
+    getAllProductUseCase: GetAllProductUseCase,
+    private val addMultipleProducts: AddMultipleProducts
 ) :
     ViewModel() {
 
-    val catalogue = getAllUseCase.execute(parameters = None()).toLiveData()
+    val catalogue = getAllProductUseCase.execute(parameters = None()).toLiveData()
 
     val isLoading = catalogue.resourceLoadingLiveData()
 
     fun uploadCatalogue(examples: List<Product>): LiveData<Resource<List<Product>>> {
-        return addMultipleObjects.execute(examples).toLiveData()
+        return addMultipleProducts.execute(examples).toLiveData()
     }
 
 }

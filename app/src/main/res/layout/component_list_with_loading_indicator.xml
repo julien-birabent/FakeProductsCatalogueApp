@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:setAdapter="@{adapter}"
-            app:setOrientation="@{RecyclerView.VERTICAL}" />
+            app:setOrientation="@{orientation}" />
 
         <androidx.core.widget.ContentLoadingProgressBar
             style="?android:attr/progressBarStyleLarge"

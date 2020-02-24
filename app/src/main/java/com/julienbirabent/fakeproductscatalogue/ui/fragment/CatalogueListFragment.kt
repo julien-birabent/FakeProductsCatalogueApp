@@ -12,9 +12,10 @@ import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ViewTypeHolder
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseFragment
 import com.julienbirabent.fakeproductscatalogue.ui.extension.createItemSelectionCallback
+import com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductThumbnail
 import com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel
 
-class CatalogueListFragment: BaseFragment<FragmentCatalogueListBinding, MainViewModel>() {
+class CatalogueListFragment : BaseFragment<FragmentCatalogueListBinding, MainViewModel>() {
     override var viewModelBindingVariable: Int = BR.viewModel
     override var layoutResId: Int = R.layout.fragment_catalogue_list
 
@@ -27,7 +28,6 @@ class CatalogueListFragment: BaseFragment<FragmentCatalogueListBinding, MainView
     override fun setDataBindingVariables(binding: ViewDataBinding) {
         super.setDataBindingVariables(binding)
         layoutBinding.setVariable(BR.adapter, adapter)
-
     }
 
     override fun onStart() {
@@ -39,13 +39,13 @@ class CatalogueListFragment: BaseFragment<FragmentCatalogueListBinding, MainView
 
     }
 
-    private fun createList(examples: List<Product>): List<ViewTypeHolder<Product, ItemSelectionCallback<Product>>> {
+    private fun createList(examples: List<Product>): List<ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>>> {
         return examples.map { createItemViewTypeHolder(it) }
     }
 
-    private fun createItemViewTypeHolder(item: Product): ViewTypeHolder<Product, ItemSelectionCallback<Product>> {
+    private fun createItemViewTypeHolder(item: Product): ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>> {
         return ViewTypeHolder(
-            viewData = item,
+            viewData = ItemProductThumbnail(item.title, item.imageResource, item),
             layoutResId = R.layout.item_product_thumbnail,
             callback = createItemSelectionCallback {
                 //TODO navigate to product details.

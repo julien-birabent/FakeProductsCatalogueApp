@@ -70,6 +70,7 @@ fun setImageResource(view: ImageView, imageResource: ImageResource<*>) {
     when (imageResource.resource) {
         is String -> setImageUri(view, imageResource.resource)
         is Int -> setImageResourceResId(view, imageResource.resource)
+        is Long -> setImageResourceResId(view, imageResource.resource.toInt())
     }
 }
 

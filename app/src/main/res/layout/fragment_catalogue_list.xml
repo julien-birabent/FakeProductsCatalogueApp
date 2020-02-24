@@ -18,15 +18,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_product_catalogue"
-            android:textSize="@dimen/text_size_small"
+            android:textSize="@dimen/text_size_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,12 +36,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_header"
             bind:adapter="@{adapter}"
-            bind:isLoading="@{viewModel.isLoading}"
-            bind:orientation="@{RecyclerView.HORIZONTAL}" />
+            bind:isLoading="@{viewModel.isLoading}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

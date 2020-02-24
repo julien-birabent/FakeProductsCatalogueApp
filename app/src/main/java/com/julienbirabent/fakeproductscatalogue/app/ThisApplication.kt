@@ -10,6 +10,7 @@ import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
 const val PRODUCT_COLLECTION_NAME = "catalogue"
+const val WISHLIST_COLLECTION_NAME = "wishlist"
 
 class ThisApplication : Application(), HasActivityInjector {
 

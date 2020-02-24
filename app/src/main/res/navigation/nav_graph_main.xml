@@ -6,12 +6,15 @@
 
     <fragment
         android:id="@+id/mainFragment"
+        android:label="@string/app_name"
         android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.MainFragment" >
         <action
             android:id="@+id/openProductDetails"
             app:destination="@id/productDetailsFragment"
             app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_open_exit" />
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
 
     <fragment

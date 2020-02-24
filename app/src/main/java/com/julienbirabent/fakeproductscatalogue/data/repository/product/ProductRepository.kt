@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProductRepository @Inject constructor(
+open class ProductRepository @Inject constructor(
     override val dataSource: NoSQLDataSource,
     override val collectionName: String
 ) :

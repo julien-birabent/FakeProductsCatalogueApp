@@ -60,7 +60,7 @@ abstract class BaseFragment<LayoutBinding : ViewDataBinding, VM : ViewModel> :
         return when (item.itemId) {
             android.R.id.home -> {
                 findNavController().navigateUp()
-                false
+                true
             }
             else -> super.onOptionsItemSelected(item)
         }
@@ -70,6 +70,10 @@ abstract class BaseFragment<LayoutBinding : ViewDataBinding, VM : ViewModel> :
 
     fun Fragment.displayNavigateUpButton() {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    fun Fragment.hideNavigateUpButton() {
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     fun Fragment.actionBarTitle(title: String) {

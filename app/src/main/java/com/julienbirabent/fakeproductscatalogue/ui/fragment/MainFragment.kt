@@ -14,4 +14,10 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
     override fun provideViewModel(): MainViewModel {
         return ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
     }
+
+    override fun onStart() {
+        super.onStart()
+        hideNavigateUpButton()
+        actionBarTitle(getString(R.string.app_name))
+    }
 }

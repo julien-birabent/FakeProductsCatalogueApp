@@ -1,16 +1,17 @@
 package com.julienbirabent.fakeproductscatalogue.binding
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.julienbirabent.fakeproductscatalogue.data.entity.ImageResource
+import com.julienbirabent.fakeproductscatalogue.data.entity.product.ColorResource
 import com.julienbirabent.fakeproductscatalogue.ui.LayoutManagerFactory
 
 object BindingAdapters {
@@ -67,15 +68,32 @@ fun setImageDrawable(view: ImageView, drawable: Drawable?) {
 
 @BindingAdapter("android:src")
 fun setImageResource(view: ImageView, imageResource: ImageResource<*>) {
+    view.setImageResourceExt(imageResource)
+}
+
+fun ImageView.setImageResourceExt(imageResource: ImageResource<*>) {
     when (imageResource.resource) {
-        is String -> setImageUri(view, imageResource.resource)
-        is Int -> setImageResourceResId(view, imageResource.resource)
-        is Long -> setImageResourceResId(view, imageResource.resource.toInt())
+        is String -> setImageUri(this, imageResource.resource)
+        is Int -> setImageResourceResId(this, imageResource.resource)
+        is Long -> setImageResourceResId(this, imageResource.resource.toInt())
     }
 }
 
 @BindingAdapter("android:src")
 fun setImageResource(imageView: ImageView, resource: Int) {
     imageView.setImageResource(resource)
+}
+
+@BindingAdapter("android:plainColor")
+fun setPlainColorImageResource(imageView: CardView, colorResource: ColorResource<*>?) {
+    imageView.setPlainColorImageResourceExt(colorResource)
+}
+
+fun CardView.setPlainColorImageResourceExt(imageResource: ColorResource<*>?) {
+    imageResource?.let {
+        when (it.value) {
+            is String -> this.setCardBackgroundColor(Color.parseColor(it.value))
+        }
+    }
 }
 

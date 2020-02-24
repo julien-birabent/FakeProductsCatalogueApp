@@ -15,6 +15,7 @@
 
     <com.google.android.material.card.MaterialCardView
         style="@style/CardStyle"
+        android:onClick="@{ () -> callback.onItemSelected(item.extraData)}"
         android:layout_width="100dp"
         android:layout_height="100dp">
 

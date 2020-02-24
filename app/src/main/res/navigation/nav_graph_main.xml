@@ -2,9 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/example_fragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/example_fragment"
-        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.MainFragment" />
+        android:id="@+id/mainFragment"
+        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.MainFragment" >
+        <action
+            android:id="@+id/openProductDetails"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+
+        <argument android:name="product"
+            app:nullable="false"
+            app:argType="com.julienbirabent.fakeproductscatalogue.data.entity.product.Product"/>
+    </fragment>
 </navigation>

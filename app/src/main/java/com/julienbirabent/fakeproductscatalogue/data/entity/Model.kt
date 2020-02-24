@@ -1,5 +1,7 @@
 package com.julienbirabent.fakeproductscatalogue.data.entity
 
-interface Model{
+import java.io.Serializable
+
+interface Model : Serializable{
 
 }

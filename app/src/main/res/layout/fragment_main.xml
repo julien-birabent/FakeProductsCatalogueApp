@@ -9,11 +9,7 @@
             type="com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/slight_dark_gray"
-        android:padding="16dp">
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/ViewContainer">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_catalogue_list"

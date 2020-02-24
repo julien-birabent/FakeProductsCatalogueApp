@@ -3,6 +3,7 @@ package com.julienbirabent.fakeproductscatalogue.ui.fragment
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.julienbirabent.fakeproductscatalogue.BR
 import com.julienbirabent.fakeproductscatalogue.R
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
@@ -48,7 +49,7 @@ class CatalogueListFragment : BaseFragment<FragmentCatalogueListBinding, MainVie
             viewData = ItemProductThumbnail(item.title, item.imageResource, item),
             layoutResId = R.layout.item_product_thumbnail,
             callback = createItemSelectionCallback {
-                //TODO navigate to product details.
+                findNavController().navigate(MainFragmentDirections.openProductDetails(item))
             }
         )
     }

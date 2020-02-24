@@ -76,13 +76,15 @@ class RandomProductsGenerator @Inject constructor(private val context: Context) 
         val list = mutableListOf<ColorResource<*>>()
 
         (1..random.nextInt(5)).forEach { _ ->
-            list.add(ColorResource(randomRGBColor()))
+            list.add(ColorResource(randomHexColor()))
         }
         return list
     }
 
-    private fun randomRGBColor(): Int {
-        return Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256))
+    private fun randomHexColor(): String {
+        val randRgbValue =
+            Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256))
+        return String.format("#%06x", randRgbValue)
     }
 
     private fun stringRes(resId: Int): String = context.getString(resId)

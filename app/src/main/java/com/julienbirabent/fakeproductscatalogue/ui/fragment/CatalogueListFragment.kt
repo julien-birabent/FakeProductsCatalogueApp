@@ -27,6 +27,7 @@ class CatalogueListFragment: BaseFragment<FragmentCatalogueListBinding, MainView
     override fun setDataBindingVariables(binding: ViewDataBinding) {
         super.setDataBindingVariables(binding)
         layoutBinding.setVariable(BR.adapter, adapter)
+
     }
 
     override fun onStart() {

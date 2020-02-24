@@ -49,15 +49,18 @@ open class ProductRepositoryImpl @Inject constructor(
     }
 
     override fun addToWishList(model: Product): Single<Product> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSource.addNewValue(wishListCollectionPath, model)
     }
 
     override fun getWishList(): Observable<List<Product>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSource.getCollection(wishListCollectionPath, Product::class.java)
     }
 
-    override fun emptyWishList(): Single<Product> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun emptyWishList(): Single<*> {
+        return getWishList()
+            .flatMapIterable { it }
+            .flatMap { deleteProduct(it).toObservable() }
+            .toList()
     }
 
 }

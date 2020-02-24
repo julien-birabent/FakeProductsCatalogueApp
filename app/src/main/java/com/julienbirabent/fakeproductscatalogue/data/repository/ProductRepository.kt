@@ -1,6 +1,7 @@
 package com.julienbirabent.fakeproductscatalogue.data.repository
 
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
+import com.julienbirabent.fakeproductscatalogue.rx.firebase.None
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -21,6 +22,6 @@ interface ProductRepository {
 
     fun deleteProduct(model: Product): Single<Product>
 
-    fun emptyWishList(): Single<Product>
+    fun emptyWishList(): Single<*>
 
 }

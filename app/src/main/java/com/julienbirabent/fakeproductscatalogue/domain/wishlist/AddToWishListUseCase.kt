@@ -12,7 +12,7 @@ class AddToWishListUseCase @Inject constructor(private val productRepository: Pr
     UseCase<Product, Resource<Product>>() {
 
     override fun buildUseCaseObservable(params: Product): Observable<Resource<Product>> {
-        return productRepository.addProduct(params)
+        return productRepository.addToWishList(params)
             .toObservable()
             .compose(ConverterToResourceTransformer())
     }

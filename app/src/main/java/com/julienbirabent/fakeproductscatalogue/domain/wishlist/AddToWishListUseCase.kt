@@ -9,10 +9,12 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class AddToWishListUseCase @Inject constructor(private val productRepository: ProductRepository) :
-    UseCase<Product, Resource<Product>>() {
+    UseCase<List<Product>, Resource<List<Product>>>() {
 
-    override fun buildUseCaseObservable(params: Product): Observable<Resource<Product>> {
-        return productRepository.addToWishList(params)
+    override fun buildUseCaseObservable(params: List<Product>): Observable<Resource<List<Product>>> {
+        return Observable.fromIterable(params)
+            .flatMapSingle { productRepository.addToWishList(it) }
+            .toList()
             .toObservable()
             .compose(ConverterToResourceTransformer())
     }

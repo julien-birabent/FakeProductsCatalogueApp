@@ -1,5 +1,6 @@
 package com.julienbirabent.fakeproductscatalogue.ui.fragment
 
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
@@ -10,11 +11,13 @@ import com.julienbirabent.fakeproductscatalogue.R
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.ColorResource
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.databinding.FragmentWishListBinding
+import com.julienbirabent.fakeproductscatalogue.domain.Status
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ItemSelectionCallback
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ViewTypeHolder
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseFragment
 import com.julienbirabent.fakeproductscatalogue.ui.extension.createItemSelectionCallback
+import com.julienbirabent.fakeproductscatalogue.ui.extension.showConfirmationDialog
 import com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductDetails
 import com.julienbirabent.fakeproductscatalogue.viewmodel.WishListViewModel
 
@@ -39,6 +42,22 @@ class WishListFragment : BaseFragment<FragmentWishListBinding, WishListViewModel
         viewModel.wishList.observe(this, Observer {
             it.data?.let { productList ->
                 adapter.updateList(createAdapterList(productList))
+            }
+        })
+
+        layoutBinding.buttonCheckout.setOnClickListener {
+            showConfirmationDialog(
+                message = getString(R.string.dialog_confirmation_checkout_message),
+                positiveText = getString(R.string.dialog_confirmation_checkout_positive_action_text),
+                onConfirm = this::confirmCheckOut
+            )
+        }
+    }
+
+    private fun confirmCheckOut() {
+        viewModel.checkOutWishList()?.observe(this, Observer {
+            if (it.status == Status.SUCCESS) {
+                Log.d("Wish list checked out", "Purchased items : ${it.data}")
             }
         })
     }

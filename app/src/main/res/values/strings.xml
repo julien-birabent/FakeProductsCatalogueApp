@@ -25,4 +25,7 @@
 
     <string name="action_add_to_wish_list">Add to your wish list</string>
     <string name="action_remove_from_wish_list">Remove from your wish list</string>
+
+    <string name="dialog_confirmation_checkout_message">Are you sure you want to checkout ?</string>
+    <string name="dialog_confirmation_checkout_positive_action_text">Ok</string>
 </resources>

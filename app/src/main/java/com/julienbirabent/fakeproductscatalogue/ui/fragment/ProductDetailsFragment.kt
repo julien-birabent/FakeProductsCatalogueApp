@@ -66,7 +66,7 @@ open class ProductDetailsFragment :
                     if (it.status == Status.SUCCESS) {
                         Log.d(
                             ProductDetailsFragment::class.java.simpleName,
-                            "Product added to wishlist"
+                            "Product added to wish list"
                         )
                         findNavController().navigateUp()
                     }

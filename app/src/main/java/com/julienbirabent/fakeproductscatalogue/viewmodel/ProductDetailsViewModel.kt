@@ -19,8 +19,8 @@ class ProductDetailsViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    fun addToWishList(product: Product): LiveData<Resource<Product>> {
-        return addToWishListUseCase.execute(product).toLiveData()
+    fun addToWishList(product: Product): LiveData<Resource<List<Product>>> {
+        return addToWishListUseCase.execute(listOf(product)).toLiveData()
     }
 
     fun removeFromWishList(product: Product): LiveData<Resource<List<Product>>> {

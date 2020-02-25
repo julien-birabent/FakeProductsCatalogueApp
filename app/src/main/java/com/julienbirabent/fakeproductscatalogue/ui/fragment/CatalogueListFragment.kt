@@ -37,7 +37,6 @@ class CatalogueListFragment : BaseFragment<FragmentCatalogueListBinding, MainVie
         viewModel.catalogue.observe(this, Observer {
             it.data?.let { list -> adapter.updateList(createList(list)) }
         })
-
     }
 
     private fun createList(examples: List<Product>): List<ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>>> {

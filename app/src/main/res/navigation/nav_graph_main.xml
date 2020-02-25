@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
-        android:label="@string/app_name"
-        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.MainFragment" >
+        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.MainFragment"
+        android:label="@string/app_name">
         <action
             android:id="@+id/openProductDetails"
             app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_productDetailsFromWhishListFragment"
+            app:destination="@id/productDetailsFromWhishListFragment"
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_open_exit"
             app:popEnterAnim="@anim/fragment_open_enter"
@@ -20,10 +28,18 @@
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.ProductDetailsFragment"
-        android:label="ProductDetailsFragment" >
+        android:label="ProductDetailsFragment">
 
-        <argument android:name="product"
-            app:nullable="false"
-            app:argType="com.julienbirabent.fakeproductscatalogue.data.entity.product.Product"/>
+        <argument
+            android:name="product"
+            app:argType="com.julienbirabent.fakeproductscatalogue.data.entity.product.Product"
+            app:nullable="false" />
     </fragment>
+
+    <fragment
+        android:id="@+id/productDetailsFromWhishListFragment"
+        android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.ProductDetailsFromWishListFragment"
+        tools:layout="@layout/fragment_product_details" />
+
+
 </navigation>

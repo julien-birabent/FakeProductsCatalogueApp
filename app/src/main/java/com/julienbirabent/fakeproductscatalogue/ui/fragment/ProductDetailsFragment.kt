@@ -3,6 +3,7 @@ package com.julienbirabent.fakeproductscatalogue.ui.fragment
 import android.annotation.SuppressLint
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import android.widget.Button
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,15 +53,15 @@ open class ProductDetailsFragment :
                 setupUiWithProduct(it)
             }
         })
-        setupButtonAction()
+        setupButtonAction(layoutBinding.buttonAddWishList)
     }
 
-    protected open fun setupButtonAction() {
-        setAddToWishListAction()
+    protected open fun setupButtonAction(bottomActionButton : Button) {
+        setAddToWishListAction(bottomActionButton)
     }
 
-    private fun setAddToWishListAction() {
-        layoutBinding.buttonAddWishList.setOnClickListener {
+    private fun setAddToWishListAction(bottomActionButton : Button) {
+        bottomActionButton.setOnClickListener {
             viewModel.addToWishList(args.product).observe(this,
                 Observer {
                     if (it.status == Status.SUCCESS) {

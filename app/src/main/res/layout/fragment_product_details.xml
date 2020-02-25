@@ -95,12 +95,10 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
                         android:text="@string/header_free_shipping_worldwide"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/pale_green"
-                        android:textSize="@dimen/text_size_small"
                         app:layout_constraintBaseline_toBaselineOf="@id/text_price"
                         app:layout_constraintStart_toEndOf="@id/text_price"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/HeaderSmallGreen" />
 
                     <View
                         android:id="@+id/view_divider"
@@ -210,13 +208,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_add_wish_list"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="16dp"
-            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/ButtonLarge" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

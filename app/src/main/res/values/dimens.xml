@@ -7,4 +7,5 @@
     <dimen name="text_size_huge">26sp</dimen>
 
     <dimen name="card_radius">5dp</dimen>
+    <dimen name="button_height">60dp</dimen>
 </resources>

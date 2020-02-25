@@ -98,7 +98,7 @@
                         app:layout_constraintBaseline_toBaselineOf="@id/text_price"
                         app:layout_constraintStart_toEndOf="@id/text_price"
                         app:layout_constraintTop_toTopOf="parent"
-                        style="@style/HeaderSmallGreen" />
+                        style="@style/HeaderSmall.Green" />
 
                     <View
                         android:id="@+id/view_divider"

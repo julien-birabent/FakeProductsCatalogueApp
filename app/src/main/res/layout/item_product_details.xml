@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.ItemSelectionCallback" />
+
+        <variable
+            name="item"
+            type="com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductDetails" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="@{ () -> callback.onItemSelected(item.extraData)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_price"
+                style="@style/HeaderMedium.Light"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/text_name"
+                app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintStart_toEndOf="@id/image_product"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_name"
+                style="@style/HeaderMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/text_short_description"
+                app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintStart_toEndOf="@id/image_product"
+                app:layout_constraintTop_toBottomOf="@+id/text_price" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_short_description"
+                style="@style/HeaderMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_60"
+                app:layout_constraintBottom_toTopOf="@+id/text_out_of_stock"
+                app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintStart_toEndOf="@id/image_product"
+                app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_out_of_stock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintStart_toEndOf="@id/image_product"
+                app:layout_constraintTop_toBottomOf="@+id/text_short_description" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_product"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@{item.imageResource}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_keyboard_arrow_right_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_colors_available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintStart_toEndOf="@id/image_product"
+                app:layout_constraintTop_toTopOf="@id/text_out_of_stock"
+                app:setAdapter="@{colorAdapter}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -52,6 +52,10 @@ open class ProductRepositoryImpl @Inject constructor(
         return dataSource.addNewValue(wishListCollectionPath, model)
     }
 
+    override fun removeFromWishList(model: Product): Single<Product> {
+        return dataSource.deleteDocument(wishListCollectionPath, model.uid, model)
+    }
+
     override fun getWishList(): Observable<List<Product>> {
         return dataSource.getCollection(wishListCollectionPath, Product::class.java)
     }

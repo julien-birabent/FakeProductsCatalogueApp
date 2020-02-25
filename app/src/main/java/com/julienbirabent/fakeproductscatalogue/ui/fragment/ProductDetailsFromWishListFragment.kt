@@ -1,10 +1,10 @@
 package com.julienbirabent.fakeproductscatalogue.ui.fragment
 
-import android.content.res.ColorStateList
 import android.widget.Button
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.julienbirabent.fakeproductscatalogue.R
+import com.julienbirabent.fakeproductscatalogue.domain.Status
 
 class ProductDetailsFromWishListFragment : ProductDetailsFragment() {
 
@@ -12,10 +12,17 @@ class ProductDetailsFromWishListFragment : ProductDetailsFragment() {
         super.setupButtonAction(bottomActionButton)
         context?.let {
             bottomActionButton.apply {
-                backgroundTintList =
-                    ColorStateList.valueOf(ContextCompat.getColor(it, R.color.black))
-                setOnClickListener { findNavController().navigateUp() }
+                setButtonBackgroundColor(bottomActionButton, R.color.black)
+                setOnClickListener {
+                    viewModel.removeFromWishList(args.product)
+                        .observe(viewLifecycleOwner, Observer {
+                            if (it.status == Status.SUCCESS) {
+                                findNavController().navigateUp()
+                            }
+                        })
+                }
             }
+            bottomActionButton.text = getString(R.string.action_remove_from_wish_list)
         }
     }
 }

@@ -8,27 +8,22 @@ import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.domain.Resource
 import com.julienbirabent.fakeproductscatalogue.domain.common.GetOneByIdUseCase
 import com.julienbirabent.fakeproductscatalogue.domain.wishlist.AddToWishListUseCase
+import com.julienbirabent.fakeproductscatalogue.domain.wishlist.RemoveFromWishListUseCase
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ProductDetailsViewModel @Inject constructor(
-    private val getOneByIdUseCase: GetOneByIdUseCase,
-    private val addToWishListUseCase: AddToWishListUseCase
+    private val addToWishListUseCase: AddToWishListUseCase,
+    private val removeFromWishListUseCase: RemoveFromWishListUseCase
 ) :
     ViewModel() {
 
-    private val productId: MutableLiveData<String> = MutableLiveData()
-
-    val product = Transformations.switchMap(productId) { id ->
-        getOneByIdUseCase.execute(id).toLiveData()
-    }
-
-    fun setProductId(id: String) {
-        productId.value = id
-    }
-
     fun addToWishList(product: Product): LiveData<Resource<Product>> {
         return addToWishListUseCase.execute(product).toLiveData()
+    }
+
+    fun removeFromWishList(product: Product): LiveData<Resource<List<Product>>> {
+        return removeFromWishListUseCase.execute(listOf(product)).toLiveData()
     }
 }

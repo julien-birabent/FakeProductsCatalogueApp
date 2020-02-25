@@ -1,12 +1,21 @@
 package com.julienbirabent.fakeproductscatalogue.ui.fragment
 
+import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.julienbirabent.fakeproductscatalogue.R
+import com.julienbirabent.fakeproductscatalogue.data.entity.product.ColorResource
+import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.databinding.FragmentWishListBinding
+import com.julienbirabent.fakeproductscatalogue.ui.adapter.ItemSelectionCallback
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
+import com.julienbirabent.fakeproductscatalogue.ui.adapter.ViewTypeHolder
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseFragment
+import com.julienbirabent.fakeproductscatalogue.ui.extension.createItemSelectionCallback
+import com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductDetails
 import com.julienbirabent.fakeproductscatalogue.viewmodel.WishListViewModel
 
 class WishListFragment : BaseFragment<FragmentWishListBinding, WishListViewModel>() {
@@ -24,4 +33,58 @@ class WishListFragment : BaseFragment<FragmentWishListBinding, WishListViewModel
         layoutBinding.setVariable(BR.adapter, adapter)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.wishList.observe(this, Observer {
+            it.data?.let { productList ->
+                adapter.updateList(createAdapterList(productList))
+            }
+        })
+    }
+
+    private fun createAdapterList(products: List<Product>): List<ViewTypeHolder<ItemProductDetails<Product>, ItemSelectionCallback<Product>>> {
+        return products.map { createItemViewTypeHolder(it) }
+    }
+
+    private fun createItemViewTypeHolder(item: Product): ViewTypeHolder<ItemProductDetails<Product>, ItemSelectionCallback<Product>> {
+        return ViewTypeHolder(
+            viewData = createDataViewHolder(item),
+            layoutResId = R.layout.item_product_details,
+            callback = createItemSelectionCallback {
+                val bundle = bundleOf("product" to item)
+                findNavController().navigate(
+                    R.id.action_mainFragment_to_productDetailsFromWhishListFragment,
+                    bundle
+                )
+            }
+        )
+    }
+
+    private fun createDataViewHolder(item: Product): ItemProductDetails<Product> {
+        return ItemProductDetails(
+            name = item.title,
+            imageResource = item.imageResource,
+            isOutOfStock = item.quantity <= 0,
+            price = item.price.toString(),
+            shortDescription = item.description,
+            extraData = item,
+            colorAdapter = createColorAdapter(item)
+        )
+    }
+
+    private fun createColorAdapter(it: Product): OmniAdapter {
+        return OmniAdapter().apply {
+            updateList(it.colors.map { colorResource ->
+                createColorItemViewTypeHolder(colorResource)
+            })
+        }
+    }
+
+    private fun createColorItemViewTypeHolder(item: ColorResource<*>): ViewTypeHolder<ColorResource<*>, ItemSelectionCallback<*>> {
+        return ViewTypeHolder(
+            viewData = item,
+            layoutResId = R.layout.item_image_thumbnail_mini
+        )
+    }
 }

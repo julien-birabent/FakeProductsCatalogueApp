@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -95,5 +96,10 @@ fun CardView.setPlainColorImageResourceExt(imageResource: ColorResource<*>?) {
             is String -> this.setCardBackgroundColor(Color.parseColor(it.value))
         }
     }
+}
+
+@BindingAdapter("android:visibility")
+fun setVisibility(view: View, value: Boolean) {
+    view.visibility = if (value) View.VISIBLE else View.GONE
 }
 

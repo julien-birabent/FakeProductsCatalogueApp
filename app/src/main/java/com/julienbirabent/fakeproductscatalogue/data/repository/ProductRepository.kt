@@ -14,6 +14,8 @@ interface ProductRepository {
 
     fun addToWishList(model: Product): Single<Product>
 
+    fun removeFromWishList(model: Product) : Single<Product>
+
     fun getAllProducts(): Observable<List<Product>>
 
     fun getWishList(): Observable<List<Product>>

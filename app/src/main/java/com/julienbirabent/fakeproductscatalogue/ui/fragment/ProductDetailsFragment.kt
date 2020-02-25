@@ -1,9 +1,11 @@
 package com.julienbirabent.fakeproductscatalogue.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,7 +34,7 @@ open class ProductDetailsFragment :
     }
 
     private val colorAdapter = OmniAdapter()
-    private val args by navArgs<ProductDetailsFragmentArgs>()
+    protected val args by navArgs<ProductDetailsFragmentArgs>()
 
     override fun setDataBindingVariables(binding: ViewDataBinding) {
         super.setDataBindingVariables(binding)
@@ -46,21 +48,18 @@ open class ProductDetailsFragment :
         displayNavigateUpButton()
         actionBarTitle(args.product.title)
 
-        viewModel.setProductId(args.product.uid)
-        viewModel.product.observe(this, Observer { resource ->
-            resource.data?.let {
-                updateColorList(it)
-                setupUiWithProduct(it)
-            }
-        })
-        setupButtonAction(layoutBinding.buttonAddWishList)
+        setupUiWithProduct(args.product)
+
+        setupButtonAction(layoutBinding.buttonActionWishList)
     }
 
-    protected open fun setupButtonAction(bottomActionButton : Button) {
+    protected open fun setupButtonAction(bottomActionButton: Button) {
         setAddToWishListAction(bottomActionButton)
+        bottomActionButton.text = getString(R.string.action_add_to_wish_list)
+        setButtonBackgroundColor(bottomActionButton, R.color.red)
     }
 
-    private fun setAddToWishListAction(bottomActionButton : Button) {
+    private fun setAddToWishListAction(bottomActionButton: Button) {
         bottomActionButton.setOnClickListener {
             viewModel.addToWishList(args.product).observe(this,
                 Observer {
@@ -75,20 +74,21 @@ open class ProductDetailsFragment :
         }
     }
 
-    private fun setupUiWithProduct(it: Product) {
+    private fun setupUiWithProduct(product: Product) {
+        updateColorList(product)
         layoutBinding.apply {
             textPrice.text =
-                String.format(getString(R.string.can_dollar_sign), it.price.toString())
-            it.imageResource?.let { imageResource ->
+                String.format(getString(R.string.can_dollar_sign), product.price.toString())
+            product.imageResource?.let { imageResource ->
                 imageProduct.setImageResourceExt(
                     imageResource
                 )
             }
-            textDescription.text = it.description
+            textDescription.text = product.description
             textDescription.movementMethod = ScrollingMovementMethod()
 
             textDimensions.text =
-                "H : ${it.dimensions.height}\nW : ${it.dimensions.width}\nD : ${it.dimensions.depth}"
+                "H : ${product.dimensions.height}\nW : ${product.dimensions.width}\nD : ${product.dimensions.depth}"
         }
     }
 
@@ -105,6 +105,12 @@ open class ProductDetailsFragment :
             viewData = item,
             layoutResId = R.layout.item_image_thumbnail
         )
+    }
+
+    protected fun setButtonBackgroundColor(button: Button, colorResId: Int) {
+        button.backgroundTintList =
+            context?.let { ContextCompat.getColor(it, colorResId) }
+                ?.let { ColorStateList.valueOf(it) }
     }
 
 }

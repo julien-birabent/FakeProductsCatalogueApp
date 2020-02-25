@@ -39,8 +39,8 @@ class CatalogueListFragment : BaseFragment<FragmentCatalogueListBinding, MainVie
         })
     }
 
-    private fun createList(examples: List<Product>): List<ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>>> {
-        return examples.map { createItemViewTypeHolder(it) }
+    private fun createList(products: List<Product>): List<ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>>> {
+        return products.map { createItemViewTypeHolder(it) }
     }
 
     private fun createItemViewTypeHolder(item: Product): ViewTypeHolder<ItemProductThumbnail<Product>, ItemSelectionCallback<Product>> {

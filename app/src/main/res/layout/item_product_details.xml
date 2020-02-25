@@ -16,7 +16,8 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/CardStyle"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:onClick="@{ () -> callback.onItemSelected(item.extraData)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,8 +30,10 @@
                 style="@style/HeaderMedium.Light"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="@{String.format(@string/can_dollar_sign, item.price)}"
                 app:layout_constraintBottom_toTopOf="@+id/text_name"
                 app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/image_product"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,8 +42,10 @@
                 style="@style/HeaderMedium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="@{item.name}"
                 app:layout_constraintBottom_toTopOf="@+id/text_short_description"
                 app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/image_product"
                 app:layout_constraintTop_toBottomOf="@+id/text_price" />
 
@@ -49,9 +54,12 @@
                 style="@style/HeaderMedium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@{item.shortDescription}"
                 android:textColor="@color/black_60"
                 app:layout_constraintBottom_toTopOf="@+id/text_out_of_stock"
                 app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/image_product"
                 app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
@@ -59,8 +67,12 @@
                 android:id="@+id/text_out_of_stock"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/text_out_of_stock"
+                style="@style/HeaderSmall.Red"
+                android:visibility="@{item.isOutOfStock}"
+                app:layout_constraintBottom_toTopOf="@+id/list_colors_available"
                 app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/image_product"
                 app:layout_constraintTop_toBottomOf="@+id/text_short_description" />
 
@@ -91,11 +103,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
+                android:visibility="@{!item.isOutOfStock}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/image_arrow"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/image_product"
-                app:layout_constraintTop_toTopOf="@id/text_out_of_stock"
-                app:setAdapter="@{colorAdapter}" />
+                app:layout_constraintTop_toBottomOf="@+id/text_out_of_stock"
+                app:setAdapter="@{item.colorAdapter}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

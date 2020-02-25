@@ -61,6 +61,7 @@ open class ProductDetailsFragment :
 
     private fun setAddToWishListAction(bottomActionButton: Button) {
         bottomActionButton.setOnClickListener {
+            bottomActionButton.isClickable = false
             viewModel.addToWishList(args.product).observe(this,
                 Observer {
                     if (it.status == Status.SUCCESS) {
@@ -70,6 +71,7 @@ open class ProductDetailsFragment :
                         )
                         findNavController().navigateUp()
                     }
+                    bottomActionButton.isClickable = true
                 })
         }
     }

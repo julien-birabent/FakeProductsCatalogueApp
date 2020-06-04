@@ -2,6 +2,7 @@ package com.julienbirabent.fakeproductscatalogue.ui.fragment
 
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.julienbirabent.fakeproductscatalogue.R
@@ -34,6 +35,9 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
     override fun onStart() {
         super.onStart()
 
+        viewModel.productList.observe(viewLifecycleOwner, Observer {
+            adapter.updateList(createAdapterList(it))
+        })
     }
 
     private fun createAdapterList(products: List<Product>): List<ViewTypeHolder<ItemProductDetails<Product>, ItemSelectionCallback<Product>>> {

@@ -13,7 +13,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_wish_list"
-            android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.WishListFragment"
+            android:name="com.julienbirabent.fakeproductscatalogue.ui.fragment.ProductListFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

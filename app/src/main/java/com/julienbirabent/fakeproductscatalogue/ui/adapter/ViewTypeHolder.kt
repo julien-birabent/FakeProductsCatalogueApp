@@ -1,7 +1,7 @@
 package com.julienbirabent.fakeproductscatalogue.ui.adapter
 
-data class ViewTypeHolder<T, Callback>(
-    val viewData: T,
+data class ViewTypeHolder<ViewData, Callback>(
+    val viewData: ViewData,
     val layoutResId: Int,
     val callback: Callback? = null
 ) {

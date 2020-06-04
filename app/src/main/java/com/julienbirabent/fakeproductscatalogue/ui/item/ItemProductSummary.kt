@@ -3,7 +3,7 @@ package com.julienbirabent.fakeproductscatalogue.ui.item
 import com.julienbirabent.fakeproductscatalogue.data.entity.ImageResource
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
 
-class ItemProductDetails<T>(
+class ItemProductSummary<T>(
     var name: String? = "",
     var imageResource: ImageResource<*>?,
     var price: String? = "",

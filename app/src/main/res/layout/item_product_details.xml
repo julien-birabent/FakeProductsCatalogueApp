@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductDetails" />
+            type="com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductSummary" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

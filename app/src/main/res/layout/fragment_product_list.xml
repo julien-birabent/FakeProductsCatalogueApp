@@ -22,17 +22,16 @@
         android:background="@color/light_gray"
         android:padding="8dp">
 
-        <include
-            android:id="@+id/wish_list"
-            layout="@layout/component_list_with_loading_indicator"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:adapter="@{adapter}"
-            bind:orientation="@{RecyclerView.VERTICAL}" />
+            app:setAdapter="@{adapter}"
+            app:setOrientation="@{RecyclerView.VERTICAL}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

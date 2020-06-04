@@ -1,6 +1,5 @@
 package com.julienbirabent.fakeproductscatalogue.ui.extension
 
-import android.content.DialogInterface
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.julienbirabent.fakeproductscatalogue.R

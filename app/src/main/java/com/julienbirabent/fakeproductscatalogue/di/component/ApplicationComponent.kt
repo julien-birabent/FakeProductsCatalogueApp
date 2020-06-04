@@ -2,13 +2,11 @@ package com.julienbirabent.fakeproductscatalogue.di.component
 
 import android.app.Application
 import com.julienbirabent.fakeproductscatalogue.app.ThisApplication
-import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
-import com.julienbirabent.fakeproductscatalogue.data.repository.BaseRepository
-import com.julienbirabent.fakeproductscatalogue.data.repository.ProductRepository
 import com.julienbirabent.fakeproductscatalogue.data.repository.product.ProductRepositoryImpl
-import com.julienbirabent.fakeproductscatalogue.data.source.firestore.FireStoreDataSource
-import com.julienbirabent.fakeproductscatalogue.di.module.*
-import com.julienbirabent.fakeproductscatalogue.domain.UseCase
+import com.julienbirabent.fakeproductscatalogue.di.module.ActivityBuilderModule
+import com.julienbirabent.fakeproductscatalogue.di.module.AppModule
+import com.julienbirabent.fakeproductscatalogue.di.module.RepositoryModule
+import com.julienbirabent.fakeproductscatalogue.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -22,16 +20,11 @@ import javax.inject.Singleton
         AppModule::class,
         ViewModelModule::class,
         ActivityBuilderModule::class,
-        DataSourceModule::class,
         RepositoryModule::class]
 )
 interface ApplicationComponent {
 
     fun inject(application: ThisApplication)
-
-    fun inject(useCase: UseCase.Injector)
-
-    fun inject(fireStoreDataSource: FireStoreDataSource.Injector)
 
     fun inject(productRepository: ProductRepositoryImpl)
 

@@ -4,9 +4,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.julienbirabent.fakeproductscatalogue.ui.LayoutManagerFactory
 
 class OmniAdapter :
     RecyclerView.Adapter<OmniDataBindingViewHolder>() {
@@ -20,30 +18,6 @@ class OmniAdapter :
 
     override fun getItemCount(): Int {
         return items.count()
-    }
-
-    fun switchToGridLayout(
-        recyclerView: RecyclerView,
-        orientation: Int = RecyclerView.VERTICAL,
-        spanCount: Int = 1,
-        gridPattern: ((item: Any?, position: Int, layoutResId: Int) -> Int)? = null
-    ) {
-
-        val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return gridPattern?.invoke(
-                    items[position].viewData,
-                    position,
-                    items[position].layoutResId
-                ) ?: 1
-            }
-        }
-        recyclerView.layoutManager = LayoutManagerFactory.createGridLayoutManager(
-            recyclerView,
-            spanCount,
-            orientation,
-            spanSizeLookup
-        )
     }
 
     fun updateList(newList: List<ViewTypeHolder<*, *>>) {
@@ -75,11 +49,11 @@ class OmniAdapter :
 
     private fun getViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        layoutResId: Int
     ): OmniDataBindingViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding =
-            DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
+            DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, layoutResId, parent, false)
         return OmniDataBindingViewHolder(binding)
     }
 

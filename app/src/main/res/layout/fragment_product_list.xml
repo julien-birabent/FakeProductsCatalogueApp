@@ -13,36 +13,27 @@
 
         <variable
             name="viewModel"
-            type="com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel" />
+            type="com.julienbirabent.fakeproductscatalogue.viewmodel.ProductListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_header"
-            style="@style/HeaderMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title_product_catalogue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        android:padding="8dp">
 
         <include
             android:id="@+id/wish_list"
             layout="@layout/component_list_with_loading_indicator"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_header"
+            app:layout_constraintTop_toTopOf="parent"
             bind:adapter="@{adapter}"
-            bind:isLoading="@{viewModel.isLoading}" />
-
+            bind:orientation="@{RecyclerView.VERTICAL}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

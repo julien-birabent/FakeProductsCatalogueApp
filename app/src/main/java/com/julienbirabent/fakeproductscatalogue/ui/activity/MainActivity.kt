@@ -8,18 +8,15 @@ import com.julienbirabent.fakeproductscatalogue.R
 import com.julienbirabent.fakeproductscatalogue.data.RandomProductsGenerator
 import com.julienbirabent.fakeproductscatalogue.databinding.ActivityMainBinding
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseActivity
-import com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel
+import com.julienbirabent.fakeproductscatalogue.viewmodel.ProductListViewModel
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, ProductListViewModel>() {
 
     override var layoutId: Int = R.layout.activity_main
-    override var viewModelClass: Class<MainViewModel> = MainViewModel::class.java
+    override var viewModelClass: Class<ProductListViewModel> = ProductListViewModel::class.java
     override var viewModelBindingVariable: Int = BR.viewModel
-
-    @Inject
-    lateinit var randomProductsGenerator: RandomProductsGenerator
 
     private lateinit var navController: NavController
 

@@ -6,8 +6,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class OmniAdapter :
-    RecyclerView.Adapter<OmniDataBindingViewHolder>() {
+class DataBindingRecyclerviewAdapter :
+    RecyclerView.Adapter<DataBindingViewHolder>() {
 
     private var items: MutableList<ViewTypeHolder<*, *>> = mutableListOf()
 
@@ -43,21 +43,21 @@ class OmniAdapter :
         })
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OmniDataBindingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder {
         return getViewHolder(parent, viewType)
     }
 
     private fun getViewHolder(
         parent: ViewGroup,
         layoutResId: Int
-    ): OmniDataBindingViewHolder {
+    ): DataBindingViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding =
             DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, layoutResId, parent, false)
-        return OmniDataBindingViewHolder(binding)
+        return DataBindingViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: OmniDataBindingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DataBindingViewHolder, position: Int) {
         holder.bind(items[position])
     }
 

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.julienbirabent.fakeproductscatalogue.viewmodel.MainViewModel" />
+            type="com.julienbirabent.fakeproductscatalogue.viewmodel.ProductListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/ViewContainer">

@@ -7,11 +7,11 @@
 
         <variable
             name="colorAdapter"
-            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter" />
+            type="com.julienbirabent.fakeproductscatalogue.ui.adapter.DataBindingRecyclerviewAdapter" />
 
         <variable
             name="viewModel"
-            type="com.julienbirabent.fakeproductscatalogue.viewmodel.ProductDetailsViewModel" />
+            type="com.julienbirabent.fakeproductscatalogue.viewmodel.ProductListViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -32,8 +32,8 @@ class ProductSummaryViewTypeHolderAssembler:
         )
     }
 
-    private fun createColorAdapter(it: Product): OmniAdapter {
-        return OmniAdapter().apply {
+    private fun createColorAdapter(it: Product): DataBindingRecyclerviewAdapter {
+        return DataBindingRecyclerviewAdapter().apply {
             updateList(it.colors.map { colorResource ->
                 createColorItemViewTypeHolder(colorResource)
             })

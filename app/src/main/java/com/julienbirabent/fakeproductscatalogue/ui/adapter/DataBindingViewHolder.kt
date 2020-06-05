@@ -3,7 +3,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 
-class OmniDataBindingViewHolder(val binding: ViewDataBinding) :
+class DataBindingViewHolder(val binding: ViewDataBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(viewTypeHolder: ViewTypeHolder<*, *>) {

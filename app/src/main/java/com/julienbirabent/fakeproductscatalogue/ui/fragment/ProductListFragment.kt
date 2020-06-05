@@ -8,8 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.julienbirabent.fakeproductscatalogue.R
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.databinding.FragmentProductListBinding
+import com.julienbirabent.fakeproductscatalogue.ui.adapter.DataBindingRecyclerviewAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ItemSelectionCallback
-import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ProductSummaryViewTypeHolderAssembler
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseFragment
 import com.julienbirabent.fakeproductscatalogue.ui.extension.createItemSelectionCallback
@@ -23,7 +23,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
         return ViewModelProvider(this, viewModelFactory).get(ProductListViewModel::class.java)
     }
 
-    private val adapter by lazy { OmniAdapter() }
+    private val adapter by lazy { DataBindingRecyclerviewAdapter() }
     private val viewTypeHolderAssembler = ProductSummaryViewTypeHolderAssembler()
 
     override fun setDataBindingVariables(binding: ViewDataBinding) {

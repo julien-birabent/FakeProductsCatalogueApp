@@ -11,22 +11,22 @@ import com.julienbirabent.fakeproductscatalogue.binding.setImageResourceExt
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.ColorResource
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
 import com.julienbirabent.fakeproductscatalogue.databinding.FragmentProductDetailsBinding
+import com.julienbirabent.fakeproductscatalogue.ui.adapter.DataBindingRecyclerviewAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ItemSelectionCallback
-import com.julienbirabent.fakeproductscatalogue.ui.adapter.OmniAdapter
 import com.julienbirabent.fakeproductscatalogue.ui.adapter.ViewTypeHolder
 import com.julienbirabent.fakeproductscatalogue.ui.base.BaseFragment
-import com.julienbirabent.fakeproductscatalogue.viewmodel.ProductDetailsViewModel
+import com.julienbirabent.fakeproductscatalogue.viewmodel.ProductListViewModel
 
 open class ProductDetailsFragment :
-    BaseFragment<FragmentProductDetailsBinding, ProductDetailsViewModel>() {
+    BaseFragment<FragmentProductDetailsBinding, ProductListViewModel>() {
     override var viewModelBindingVariable: Int = BR.viewModel
     override var layoutResId: Int = R.layout.fragment_product_details
 
-    override fun provideViewModel(): ProductDetailsViewModel {
-        return ViewModelProvider(this, viewModelFactory).get(ProductDetailsViewModel::class.java)
+    override fun provideViewModel(): ProductListViewModel {
+        return ViewModelProvider(this, viewModelFactory).get(ProductListViewModel::class.java)
     }
 
-    private val colorAdapter = OmniAdapter()
+    private val colorAdapter = DataBindingRecyclerviewAdapter()
     protected val args by navArgs<ProductDetailsFragmentArgs>()
 
     override fun setDataBindingVariables(binding: ViewDataBinding) {

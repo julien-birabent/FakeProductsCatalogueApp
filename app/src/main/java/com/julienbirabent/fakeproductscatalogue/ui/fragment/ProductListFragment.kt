@@ -23,8 +23,8 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
         return ViewModelProvider(this, viewModelFactory).get(ProductListViewModel::class.java)
     }
 
+    private val viewTypeHolderAssembler by lazy { ProductSummaryViewTypeHolderAssembler() }
     private val adapter by lazy { DataBindingRecyclerviewAdapter() }
-    private val viewTypeHolderAssembler = ProductSummaryViewTypeHolderAssembler()
 
     override fun setDataBindingVariables(binding: ViewDataBinding) {
         super.setDataBindingVariables(binding)

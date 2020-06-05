@@ -27,7 +27,7 @@ open class ProductDetailsFragment :
     }
 
     private val colorAdapter = DataBindingRecyclerviewAdapter()
-    protected val args by navArgs<ProductDetailsFragmentArgs>()
+    private val args by navArgs<ProductDetailsFragmentArgs>()
 
     override fun setDataBindingVariables(binding: ViewDataBinding) {
         super.setDataBindingVariables(binding)

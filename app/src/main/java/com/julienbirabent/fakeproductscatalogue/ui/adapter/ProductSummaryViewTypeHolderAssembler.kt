@@ -3,7 +3,7 @@ package com.julienbirabent.fakeproductscatalogue.ui.adapter
 import com.julienbirabent.fakeproductscatalogue.R
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.ColorResource
 import com.julienbirabent.fakeproductscatalogue.data.entity.product.Product
-import com.julienbirabent.fakeproductscatalogue.ui.item.ItemHoldingExtraData
+import com.julienbirabent.fakeproductscatalogue.ui.item.ViewItem
 import com.julienbirabent.fakeproductscatalogue.ui.item.ItemProductSummary
 
 class ProductSummaryViewTypeHolderAssembler:
@@ -12,15 +12,15 @@ class ProductSummaryViewTypeHolderAssembler:
     override fun assembleItemViewTypeHolder(
         dataModel: Product,
         callback: ItemSelectionCallback<Product>?
-    ): ViewTypeHolder<ItemHoldingExtraData<Product>, ItemSelectionCallback<Product>> {
+    ): ViewTypeHolder<ViewItem<Product>, ItemSelectionCallback<Product>> {
         return ViewTypeHolder(
-            viewData = assembleViewDataHolder(dataModel),
+            viewData = createViewData(dataModel),
             layoutResId = R.layout.item_product_details,
             callback = callback
         )
     }
 
-    override fun assembleViewDataHolder(dataModel: Product): ItemHoldingExtraData<Product> {
+    override fun createViewData(dataModel: Product): ViewItem<Product> {
         return ItemProductSummary(
             name = dataModel.title,
             imageResource = dataModel.imageResource,

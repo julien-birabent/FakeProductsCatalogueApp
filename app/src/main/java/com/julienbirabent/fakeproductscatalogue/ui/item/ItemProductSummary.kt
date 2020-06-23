@@ -11,4 +11,4 @@ class ItemProductSummary<T>(
     var isOutOfStock: Boolean = false,
     var colorAdapter: DataBindingRecyclerviewAdapter,
     extraData: T
-) : ItemHoldingExtraData<T>(extraData)
+) : ViewItem<T>(extraData)

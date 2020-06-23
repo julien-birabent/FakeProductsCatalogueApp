@@ -37,10 +37,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
         viewModel.productList.observe(viewLifecycleOwner, Observer {
             adapter.updateList(
                 it.map { product ->
-                    viewTypeHolderAssembler.assembleItemViewTypeHolder(
-                        product,
-                        productDetailsNavigationDelegate(product)
-                    )
+                    viewTypeHolderAssembler.assembleItemViewTypeHolder(product, productDetailsNavigationDelegate(product))
                 }
             )
         })
@@ -48,9 +45,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding, ProductList
 
     private fun productDetailsNavigationDelegate(product: Product): ItemSelectionCallback<Product> {
         return createItemSelectionCallback {
-            findNavController().navigate(
-                MainFragmentDirections.openProductDetails(product)
-            )
+            findNavController().navigate(MainFragmentDirections.openProductDetails(product))
         }
     }
 }

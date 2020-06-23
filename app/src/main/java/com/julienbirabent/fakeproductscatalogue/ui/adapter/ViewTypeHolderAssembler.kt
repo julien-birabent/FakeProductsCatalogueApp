@@ -1,13 +1,13 @@
 package com.julienbirabent.fakeproductscatalogue.ui.adapter
 
-import com.julienbirabent.fakeproductscatalogue.ui.item.ItemHoldingExtraData
+import com.julienbirabent.fakeproductscatalogue.ui.item.ViewItem
 
-abstract class ViewTypeHolderAssembler<InputModel, ViewDataHolder : ItemHoldingExtraData<InputModel>, Callback> {
+abstract class ViewTypeHolderAssembler<InputModel, ViewDataHolder : ViewItem<InputModel>, Callback> {
 
     abstract fun assembleItemViewTypeHolder(
         dataModel: InputModel,
         callback: Callback? = null
-    ): ViewTypeHolder<ItemHoldingExtraData<InputModel>, Callback>
+    ): ViewTypeHolder<ViewItem<InputModel>, Callback>
 
-    protected abstract fun assembleViewDataHolder(dataModel: InputModel): ItemHoldingExtraData<InputModel>
+    protected abstract fun createViewData(dataModel: InputModel): ViewItem<InputModel>
 }
